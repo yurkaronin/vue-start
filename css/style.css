@@ -54,6 +54,7 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   /* 1 */
   height: 0;
@@ -239,6 +240,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   color: inherit;
@@ -273,6 +275,7 @@ textarea {
  */
 [type=checkbox],
 [type=radio] {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -443,8 +446,6 @@ input[type=radio].visually-hidden {
   font-size: 1rem;
   line-height: 1;
   padding: 14px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   transition: 0.3s;
 }
@@ -581,4 +582,41 @@ input[type=radio].visually-hidden {
 }
 .js-menu-active .humburger span:last-child {
   transform: rotate(45deg);
-}/*# sourceMappingURL=style.css.map */
+}
+
+.new-note {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 64px;
+  max-width: 650px;
+}
+.new-note label {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+.new-note input,
+.new-note textarea {
+  opacity: 1;
+  padding: 12px 20px;
+  color: #000000;
+}
+.new-note button {
+  background-color: #009688;
+  padding: 12px 20px;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #009688;
+}
+
+.message {
+  background-color: rgba(255, 192, 203, 0.651);
+}
+.message p {
+  color: red;
+  font-style: italic;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+}

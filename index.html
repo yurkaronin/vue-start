@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="HandheldFriendly" content="True" />
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="telep hone=no" />
   <meta name="format-detection" content="address=no" />
   <meta http-equiv="Cache-Control" content="no-cache" />
   <meta name="robots" content="noindex, nofollow">
@@ -28,21 +27,35 @@
   <!-- рабочая область приложения  -->
   <div id="app">
     <div class="wrapper">
-
       <h1> {{ title }} </h1>
-      <label>
-        Тестовое поле: <input type="text" v-model="text">
-      </label>
-      <button  @click="getText">Отправить данные</button>
-      <p>Результат вывода данных из поля: <span> {{ text }} </span></p>
+      <!-- сообщение об ошибке  -->
+      <div class="message" v-if="message">
+        <p> {{ message }} </p>
+      </div>
+      <!-- добавление новой заметки  -->
+        <div class="new-note">
+          <label for="">Введите заголовок заметки</label>
+          <input type="text" name="" id="" placeholder="Ваше название" v-model="note.title">
 
-      <button @click="someText = !someText">Показать текст</button>
-      <div v-if="someText">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi necessitatibus id quod!</p>
+          <textarea name="" id="" cols="30" rows="10" v-model="note.description">Текст заметки</textarea>
+          <button type="submit" @click="addNote">Добавить заметку</button>
+        </div>
+
+
+      <!-- список заметок  -->
+      <div class="notes">
+        <ul class="note" v-for="(note, index) in notes" :key="index">
+          <li class="note__header">
+            <h3> {{ note.title }} </h3>
+            <p> {{ note.description }} </p>
+            <hr>
+            <time> {{ note.date }} </time>
+
+          </li>
+        </ul>
       </div>
 
     </div>
-
   </div>
 
   <script></script>
