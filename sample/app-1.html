@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="address=no" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <link type="image/png" sizes="16x16" rel="icon" href="favicon.ico">
+
+  <!-- <script src="https://unpkg.com/vue@3.2.37"></script> -->
+  <!-- <script src="https://unpkg.com/vue@3"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <title>Заголовок страницы</title>
+  <meta name="description" content="Описание страницы">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- рабочая область приложения  -->
+  <div id="app">
+    <div class="wrapper">
+
+      <h1> {{ title }} </h1>
+      <label>
+        Тестовое поле: <input type="text" v-model="text">
+      </label>
+      <button  @click="getText">Отправить данные</button>
+      <p>Результат вывода данных из поля: <span> {{ text }} </span></p>
+
+      <button @click="someText = !someText">Показать текст</button>
+      <div v-if="someText">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi necessitatibus id quod!</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
