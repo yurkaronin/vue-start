@@ -1,12 +1,40 @@
 <template>
+
   <div class="wrapper">
-    <div class="wrapper-content">
-      <section>
-        <div class="container">
-          <h1>{{ title }}</h1>
-          <img alt="Vue logo" src="./assets/logo.png" />
-        </div>
-      </section>
+    <h1 class="title">{{ title }}</h1>
+    <!-- сообщение об ошибке  -->
+    <div class="message" v-if="message">
+      <p>{{ message }}</p>
+    </div>
+    <!-- добавление новой заметки  -->
+    <div class="new-note">
+      <label for="">Введите заголовок заметки</label>
+      <input
+        type="text"
+        name=""
+        id=""
+        placeholder="Ваше название"
+        v-model="note.title"
+      />
+
+      <textarea name="" id="" cols="30" rows="10" v-model="note.description">
+Текст заметки</textarea
+      >
+      <button type="submit" @click="addNote">Добавить заметку</button>
+    </div>
+
+    <!-- список заметок  -->
+    <div class="notes">
+      <div class="wrapper">
+        <ul class="note" v-for="(note, index) in notes" :key="index">
+          <li class="note__header">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.description }}</p>
+            <hr />
+            <time> {{ note.date }} </time>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -15,10 +43,56 @@
 export default {
   name: "App",
   components: {},
-  data () {
+  data() {
     return {
-      title: 'Привет МИР!'
-    }
+      title: "Мои заметки",
+      message: null,
+      note: {
+        title: "",
+        description: "",
+        date: "",
+      },
+      notes: [
+        {
+          title: "SvelteJS - набирает обороты",
+          description:
+            "Сегодня он проще и быстрее чем любой другой JS фреймворк для веба.И на нем можно делать все - сайты, виджеты, мобильные приложения или десктоп приложения",
+          date: new Date(Date.now()).toLocaleString(),
+        },
+        {
+          title: "Пробую реанимировать канал",
+          description:
+            "переосмыслить? пока планирую писать заметки, больше для себя, чтобы структурировать мысли, если кому то понравится - хорошо, если что то получится - еще лучше...",
+          date: new Date(Date.now()).toLocaleString(),
+        },
+        {
+          title: "Создание favicon для сайта",
+          description:
+            "Favicon играет важную роль в веб-приложениях. Он может улучшить внешний вид сайта в выдаче, повышает узнаваемость вашего сайта, помогает пользователю быстро найти...",
+          date: new Date(Date.now()).toLocaleString(),
+        },
+      ],
+    };
+  },
+  methods: {
+    addNote() {
+      let { title, description } = this.note;
+
+      if (title === "") {
+        this.message = "Заголовок заметки не может быть пустым!";
+        return false;
+      }
+
+      this.notes.push({
+        title,
+        description,
+        date: new Date(Date.now()).toLocaleString(),
+      });
+
+      this.message = null;
+      this.note.title = "";
+      this.note.description = "";
+    },
   },
 };
 </script>
