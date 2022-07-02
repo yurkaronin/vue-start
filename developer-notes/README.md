@@ -1,4 +1,4 @@
-# vue-cli
+# developer-notes
 
 ## Project setup
 ```
