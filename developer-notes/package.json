@@ -1,6 +1,7 @@
 {
-  "name": "developer-notes",
+  "name": "neon-notes",
   "version": "0.1.0",
+  "description": "Стильное авторское приложение для заметок",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
